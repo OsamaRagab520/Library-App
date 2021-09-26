@@ -1,0 +1,35 @@
+from django.urls import path
+from .views import (BookListView, BookUpdateView, BookDetailView,
+                    BookDeleteView, BookCreateView, BookBorrowView,
+                    BookReturnView, BorrowListView, avaliableListView,
+                    StudentListView, StudentDetailView, StudentUpdateView,
+                    BookSearchView, StudentSearchView, StudentBooksListView)
+
+urlpatterns = [
+    path('', BookListView.as_view(), name='book_list'),
+    path('new/', BookCreateView.as_view(), name='book_new'),
+    path('<int:pk>/edit/',
+         BookUpdateView.as_view(), name='book_edit'),
+    path('<int:pk>/',
+         BookDetailView.as_view(), name='book_detail'),
+    path('<int:pk>/delete/',
+         BookDeleteView.as_view(), name='book_delete'),
+    path('search/',
+         BookSearchView.as_view(), name='book_search'),
+    path('<int:pk>/borrow/',
+         BookBorrowView.as_view(), name='book_borrow'),
+    path('<int:pk>/return/',
+         BookReturnView.as_view(), name='book_return'),
+    path('borrowed/', BorrowListView.as_view(), name='borrow_list'),
+    path('avaliable/', avaliableListView.as_view(), name='avaliable_list'),
+    path('students/', StudentListView.as_view(), name='student_list'),
+    path('students/<int:pk>/',
+         StudentDetailView.as_view(), name='student_detail'),
+    path('students/<int:pk>/edit/',
+         StudentUpdateView.as_view(), name='student_edit'),
+    path('students/search/',
+         StudentSearchView.as_view(), name='student_search'),
+    path('students/books/',
+         StudentBooksListView.as_view(), name='student_books'),
+
+]

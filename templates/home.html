@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-{% if user.is_authenticated %}
-Hi {{ user.username }}!
-<p><a href="{% url 'logout' %}">Log Out</a></p>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a> |
-<a href="{% url 'signup' %}">Sign Up</a>
-{% endif %}
+<div class="jumbotron" style="margin-top: 5rem;text-align:center;">
+    <h1 class="display-1 mb-5">Library app</h1>
+    <p class="lead mb-4">Osama Mohamed Ragab</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="{% url 'book_list' %}" role="button">View All Books</a>
+    </p>
+</div>
 {% endblock content %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Books{% endblock title %}
+{% block content %}
+<div class="container pt-5">
+    <form action="{% url 'book_search' %}" method="get"
+        class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+        {% if user.is_staff %}
+        <a class="btn btn-primary mr-4" href="{% url 'book_new' %}">Add</a>
+        {% endif %}
+        <button type="submit" class="btn btn-primary-outline"><i class="gg-search"></i></button>
+        <input name="title" class="form-control form-control-sm mr-4 w-25" type="search" placeholder="Search">
+        <a class="btn btn-secondary mr-2" href="{% url 'avaliable_list' %}">Avalible</a>
+        <a class="btn btn-dark" href="{% url 'borrow_list' %}">Unavailable</a>
+    </form>
+    <div class="row justify-content-center">
+        {% for book in books %}
+        <div class="card m-4 shadow pt-3" style="width:17rem;">
+
+            <div class="col">
+
+                <a href="{% url 'book_detail' book.pk %}"><img class="card-img-top" src="{{ book.img }}"
+                        alt="Card image cap" height="310px"></a>
+                <div class="card-body" style="text-align: center;">
+                    <span class="badge badge-pill badge-dark">{{ book.category }}</span>
+                    <h5 class="card-title"><a href="{% url 'book_detail' book.pk %}" style="color:black;">
+                            {{ book.title}}</a></h5>
+                    {% if user.is_staff %}
+                    <div class="row">
+                        <div class="col">
+                            <a href="{% url 'book_edit' book.pk %}" class="btn btn-warning mr-1"
+                                style="width:80px">Edit</a>
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'book_delete' book.pk %}" class="btn btn-danger"
+                                style="width:80px">Delete</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    {% if book.student %}
+                    {% if book.student == user %}
+                    <a href="{% url 'book_return' book.pk %}" class="btn btn-secondary mb-1">Return</a>
+                    {% else %}
+                    <span class="badge badge-pill badge-danger">Unavailable</span>
+                    <br>
+                    <small class="text-muted">Will return in {{ book.return_date }}</small>
+                    {% endif %}
+                    {% else %}
+                    <a href="{% url 'book_borrow' book.pk %}" class="btn btn-info mb-1">Borrow</a>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <h2 class="mt-5">Sorry, no matches found.</h2>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
