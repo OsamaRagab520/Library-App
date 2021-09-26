@@ -14,6 +14,9 @@ To configure the environment we will use `pipenv`:
 
     $ pip install --user pipenv
     $ pipenv sync
+
+To run the application locally run the following commands:
+
     $ pipenv shell
     $ python manage.py runserver
 
