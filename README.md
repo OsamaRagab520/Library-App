@@ -19,7 +19,7 @@ To configure the environment we will use `pipenv`:
 
 The application is run on `http://127.0.0.1:5000/` by default.
 
-
+### Project Structure
     │   db.sqlite3
     │   manage.py
     │   Pipfile
