@@ -105,4 +105,5 @@ The application is run on `http://127.0.0.1:5000/` by default.
 
 ## Acknowledgements & Final words
 This is the project of ITI summer training with some personal touches. Of course there will be imperfections, flaws that might need some more work.
+
 thanks Eng.Noha Shehab for your time & effort.
