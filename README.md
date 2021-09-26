@@ -1,6 +1,7 @@
 # Library-App
 ### Description
 Library app, a web app via which you can manage the interaction between the students and library's books.
+
 this is the first version which implement the necessary features __only__.
 
 ### Code style
@@ -14,7 +15,7 @@ To configure the environment we will use `pipenv`:
     $ pip install --user pipenv
     $ pipenv sync
     $ pipenv shell
-    $ pipenv manage.py runserver
+    $ python manage.py runserver
 
 The application is run on `http://127.0.0.1:5000/` by default.
 
